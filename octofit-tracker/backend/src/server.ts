@@ -1,5 +1,6 @@
 import express from 'express';
 import { connectDatabase } from './config/database.js';
+import { apiPort, getApiBaseUrl } from './config/server.js';
 import usersRouter from './routes/users.js';
 import teamsRouter from './routes/teams.js';
 import activitiesRouter from './routes/activities.js';
@@ -7,10 +8,7 @@ import leaderboardRouter from './routes/leaderboard.js';
 import workoutsRouter from './routes/workouts.js';
 
 const app = express();
-const port = Number(process.env.PORT) || 8000;
-const baseUrl = process.env.CODESPACE_NAME
-  ? `https://${process.env.CODESPACE_NAME}-8000.app.github.dev`
-  : `http://localhost:${port}`;
+const baseUrl = getApiBaseUrl();
 
 app.use(express.json());
 
@@ -26,7 +24,7 @@ app.use('/api/workouts', workoutsRouter);
 
 connectDatabase()
   .then(() => {
-    app.listen(port, () => {
+    app.listen(apiPort, () => {
       console.log(`OctoFit API listening on ${baseUrl}`);
     });
   })
