@@ -21,6 +21,7 @@ export default function Activities() {
           <td>{activity.performedAt ? new Date(activity.performedAt).toLocaleDateString() : '—'}</td>
         </tr>
       )}
+      endpoint="/api/activities/"
       resource="activities"
       title="Activity feed"
     />

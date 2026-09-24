@@ -5,14 +5,14 @@ function valueOrDash(value) {
   return value === undefined || value === null || value === '' ? '—' : value
 }
 
-export default function ResourcePage({ resource, eyebrow, title, description, columns, renderRow }) {
+export default function ResourcePage({ resource, endpoint, eyebrow, title, description, columns, renderRow }) {
   const [records, setRecords] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     let isCurrent = true
-    fetchCollection(resource)
+    fetchCollection(endpoint, resource)
       .then((items) => {
         if (isCurrent) setRecords(items)
       })
@@ -25,7 +25,7 @@ export default function ResourcePage({ resource, eyebrow, title, description, co
     return () => {
       isCurrent = false
     }
-  }, [resource])
+  }, [endpoint, resource])
 
   return (
     <section className="resource-page">

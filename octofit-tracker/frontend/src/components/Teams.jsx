@@ -17,6 +17,7 @@ export default function Teams() {
           <td><span className="member-count">{team.members?.length ?? 0}</span></td>
         </tr>
       )}
+      endpoint="/api/teams/"
       resource="teams"
       title="Teams"
     />

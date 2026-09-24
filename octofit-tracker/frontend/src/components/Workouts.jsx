@@ -19,6 +19,7 @@ export default function Workouts() {
           <td>{display(workout.durationMinutes)} min</td>
         </tr>
       )}
+      endpoint="/api/workouts/"
       resource="workouts"
       title="Workouts"
     />

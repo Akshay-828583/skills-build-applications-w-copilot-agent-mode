@@ -1,8 +1,8 @@
 const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
 
 export const apiBaseUrl = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api'
+  ? `https://${codespaceName}-8000.app.github.dev`
+  : 'http://localhost:8000'
 
 export function getCollection(payload) {
   if (Array.isArray(payload)) return payload
@@ -14,8 +14,8 @@ export function getCollection(payload) {
   return []
 }
 
-export async function fetchCollection(resource) {
-  const response = await fetch(`${apiBaseUrl}/${resource}/`)
+export async function fetchCollection(endpoint, resource) {
+  const response = await fetch(`${apiBaseUrl}${endpoint}`)
   if (!response.ok) {
     throw new Error(`Unable to load ${resource} (${response.status})`)
   }

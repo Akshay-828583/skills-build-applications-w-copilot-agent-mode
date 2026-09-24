@@ -19,6 +19,7 @@ export default function Users() {
           <td><strong className="accent-number">{display(user.points)}</strong></td>
         </tr>
       )}
+      endpoint="/api/users/"
       resource="users"
       title="Members"
     />

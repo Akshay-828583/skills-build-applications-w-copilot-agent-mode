@@ -19,6 +19,7 @@ export default function Leaderboard() {
           <td><strong className="accent-number">{display(entry.points)}</strong></td>
         </tr>
       )}
+      endpoint="/api/leaderboard/"
       resource="leaderboard"
       title="Leaderboard"
     />
