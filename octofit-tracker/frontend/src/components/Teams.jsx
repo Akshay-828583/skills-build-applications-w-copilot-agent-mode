@@ -1,5 +1,9 @@
 import ResourcePage from './ResourcePage.jsx'
 
+const teamsEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
+  : 'http://localhost:8000/api/teams/'
+
 export default function Teams() {
   return (
     <ResourcePage
@@ -17,7 +21,7 @@ export default function Teams() {
           <td><span className="member-count">{team.members?.length ?? 0}</span></td>
         </tr>
       )}
-      endpoint="/api/teams/"
+      endpoint={teamsEndpoint}
       resource="teams"
       title="Teams"
     />

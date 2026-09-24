@@ -1,5 +1,9 @@
 import ResourcePage from './ResourcePage.jsx'
 
+const activitiesEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+  : 'http://localhost:8000/api/activities/'
+
 export default function Activities() {
   return (
     <ResourcePage
@@ -21,7 +25,7 @@ export default function Activities() {
           <td>{activity.performedAt ? new Date(activity.performedAt).toLocaleDateString() : '—'}</td>
         </tr>
       )}
-      endpoint="/api/activities/"
+      endpoint={activitiesEndpoint}
       resource="activities"
       title="Activity feed"
     />

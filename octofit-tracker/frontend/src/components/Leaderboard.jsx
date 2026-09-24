@@ -1,5 +1,9 @@
 import ResourcePage from './ResourcePage.jsx'
 
+const leaderboardEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+  : 'http://localhost:8000/api/leaderboard/'
+
 export default function Leaderboard() {
   return (
     <ResourcePage
@@ -19,7 +23,7 @@ export default function Leaderboard() {
           <td><strong className="accent-number">{display(entry.points)}</strong></td>
         </tr>
       )}
-      endpoint="/api/leaderboard/"
+      endpoint={leaderboardEndpoint}
       resource="leaderboard"
       title="Leaderboard"
     />

@@ -1,5 +1,9 @@
 import ResourcePage from './ResourcePage.jsx'
 
+const workoutsEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`
+  : 'http://localhost:8000/api/workouts/'
+
 export default function Workouts() {
   return (
     <ResourcePage
@@ -19,7 +23,7 @@ export default function Workouts() {
           <td>{display(workout.durationMinutes)} min</td>
         </tr>
       )}
-      endpoint="/api/workouts/"
+      endpoint={workoutsEndpoint}
       resource="workouts"
       title="Workouts"
     />

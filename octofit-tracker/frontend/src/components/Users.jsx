@@ -1,5 +1,9 @@
 import ResourcePage from './ResourcePage.jsx'
 
+const usersEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/`
+  : 'http://localhost:8000/api/users/'
+
 export default function Users() {
   return (
     <ResourcePage
@@ -19,7 +23,7 @@ export default function Users() {
           <td><strong className="accent-number">{display(user.points)}</strong></td>
         </tr>
       )}
-      endpoint="/api/users/"
+      endpoint={usersEndpoint}
       resource="users"
       title="Members"
     />
